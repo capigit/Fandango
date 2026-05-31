@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Analyse du biais de notation Fandango — 505 films, 2014–2015">
+  <title>Fandango — Analyse du Biais de Notation</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="logo">
+      <div class="logo-dot">⭐</div>
+      <span>FandangoAnalysis</span>
+    </div>
+    <nav>
+      <a href="#stats">Chiffres clés</a>
+      <a href="#story">Le Biais</a>
+      <a href="#charts">Graphiques</a>
+      <a href="#explore">Explorer</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <!-- Gauche : message -->
+        <div class="hero-text">
+          <div class="badge">Fandango · 505 films · 2014–2015</div>
+          <h1>Les notes Fandango<br>étaient <em>truquées</em></h1>
+          <p>75% des films affichaient une note supérieure à leur note réelle.
+             Une investigation data révèle l'ampleur du biais.</p>
+          <div class="hero-cta">
+            <a href="#charts" class="btn-primary">Découvrir l'analyse →</a>
+          </div>
+        </div>
+
+        <!-- Droite : scatter plot réel -->
+        <div class="hero-chart-wrap">
+          <div class="hc-header">
+            <span class="hc-title">Note affichée vs note réelle</span>
+            <span class="hc-sub">Chaque point = 1 film</span>
+          </div>
+          <div class="hc-body">
+            <canvas id="hero-chart"></canvas>
+          </div>
+          <div class="hc-legend">
+            <span><span class="hc-dot g"></span>Équitable</span>
+            <span><span class="hc-dot o"></span>Légèrement gonflée</span>
+            <span><span class="hc-dot r"></span>Fortement gonflée</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <a href="#stats" class="scroll-hint" aria-label="Défiler vers le bas">↓</a>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="wrap stats-wrap" id="stats">
+    <div id="stats-grid" class="stats-grid">
+      <div class="loader" style="grid-column:1/-1">
+        <div class="spin"></div><span>Chargement…</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STORY ── -->
+  <div class="story-bg" id="story">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="tag">Contexte</div>
+        <h2>Comment fonctionne le biais ?</h2>
+        <p>Fandango affichait des notes d'utilisateurs en étoiles — mais pas n'importe comment.</p>
+      </div>
+      <div class="story-grid">
+        <div class="story-text">
+          <h3>L'astuce des étoiles arrondies</h3>
+          <p>Fandango propose des notes de 0 à 5 étoiles, par paliers de 0.5.
+             Ces notes sont censées refléter l'avis du public.</p>
+          <p>En 2015, le journaliste Walt Hickey (FiveThirtyEight) a inspecté le code source
+             de la page et découvert que la note brute stockée <em>différait</em> de celle affichée.</p>
+          <div class="callout">
+            <p><strong>Le mécanisme :</strong> Fandango appliquait un arrondi au <em>plafond</em>
+               (ceiling) au lieu d'un arrondi standard. Un 3.1 devenait 3.5, un 4.1 devenait 4.5.
+               Résultat : les notes affichées étaient presque toujours supérieures à la réalité.</p>
+          </div>
+          <p>L'utilisateur qui consulte la fiche d'un film voit des étoiles gonflées et est incité
+             à acheter son billet — sans savoir que la note réelle est plus basse.</p>
+        </div>
+        <div id="demo-box" class="demo-box">
+          <div class="demo-title">Exemples concrets</div>
+          <div class="demo-sub">Note réelle → Note affichée</div>
+          <div class="loader"><div class="spin"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHARTS ── -->
+  <section id="charts">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="tag">Visualisations</div>
+        <h2>La preuve en images</h2>
+        <p>Trois angles pour comprendre l'étendue du biais de notation Fandango.</p>
+      </div>
+      <div id="insight-banner"></div>
+      <div id="charts-grid" class="charts-grid">
+        <div class="loader" style="grid-column:1/-1">
+          <div class="spin"></div><span>Génération des graphiques…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TABLE ── -->
+  <div class="table-bg" id="explore">
+    <div class="wrap">
+      <div class="section-hd">
+        <div class="tag">Exploration</div>
+        <h2>Explorez les données</h2>
+        <p>Cherchez un film, triez les colonnes, filtrez par niveau d'écart.</p>
+      </div>
+      <div id="table-area">
+        <div class="loader"><div class="spin"></div><span>Chargement du tableau…</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>Données : Walt Hickey / FiveThirtyEight · 505 films · 2014-2015
+       · <a href="https://github.com" target="_blank">Déployé sur GitHub Pages</a></p>
+  </footer>
+
+</body>
+</html>
