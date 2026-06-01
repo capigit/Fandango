@@ -34,22 +34,48 @@
     <div class="wrap">
       <div class="hero-grid">
 
-        <!-- Gauche : message -->
+        <!-- Gauche : hero stat + texte -->
         <div class="hero-text">
           <div class="badge">Fandango · 505 films · 2014–2015</div>
-          <h1>Les notes Fandango<br>étaient <em>truquées</em></h1>
-          <p>75% des films affichaient une note supérieure à leur note réelle.
-             Une investigation data révèle l'ampleur du biais.</p>
+          <h1>
+            <span class="hero-num">75%</span>
+            <span class="hero-sub">des films — une note <em>truquée</em></span>
+          </h1>
+          <p>Fandango arrondissait systématiquement les étoiles à la hausse,
+             trompant des millions de spectateurs sur la qualité réelle des films.</p>
+          <div class="hero-kpis">
+            <div class="hk-item">
+              <span class="hk-val">+0.21★</span>
+              <span class="hk-lbl">Écart moyen</span>
+            </div>
+            <div class="hk-sep"></div>
+            <div class="hk-item">
+              <span class="hk-val">+1.0★</span>
+              <span class="hk-lbl">Écart max</span>
+            </div>
+            <div class="hk-sep"></div>
+            <div class="hk-item">
+              <span class="hk-val">505</span>
+              <span class="hk-lbl">Films analysés</span>
+            </div>
+          </div>
           <div class="hero-cta">
             <a href="#charts" class="btn-primary">Découvrir l'analyse →</a>
+            <a href="#explore" class="btn-ghost">Explorer les données</a>
           </div>
         </div>
 
-        <!-- Droite : scatter plot réel -->
+        <!-- Droite : scatter plot -->
         <div class="hero-chart-wrap">
           <div class="hc-header">
-            <span class="hc-title">Note affichée vs note réelle</span>
-            <span class="hc-sub">Chaque point = 1 film</span>
+            <div>
+              <span class="hc-title">Note affichée vs note réelle</span>
+              <p class="hc-sub">Points au-dessus de la diagonale = note gonflée</p>
+            </div>
+            <div class="hc-badge">
+              <span class="hc-badge-num">75%</span>
+              <span class="hc-badge-lbl">gonflés</span>
+            </div>
           </div>
           <div class="hc-body">
             <canvas id="hero-chart"></canvas>
