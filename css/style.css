@@ -57,8 +57,8 @@ nav a.active::after { transform:scaleX(1); }
 }
 
 /* ── HERO GRID ── */
-.hero .wrap  { max-width:1440px; }
-.hero-grid   { display:grid; grid-template-columns:1fr 1fr; gap:5.5rem; align-items:center; }
+.hero .wrap  { max-width:none; padding:0 4rem; }
+.hero-grid   { display:grid; grid-template-columns:1fr 1.3fr; gap:5rem; align-items:center; }
 
 /* ── HERO TEXT (gauche) ── */
 .hero-text { text-align:left; }
@@ -131,7 +131,7 @@ nav a.active::after { transform:scaleX(1); }
 .hc-badge  { text-align:right; flex-shrink:0; background:rgba(227,24,55,.15); border:1px solid rgba(227,24,55,.3); border-radius:10px; padding:.5rem .85rem; }
 .hc-badge-num { display:block; font-size:1.6rem; font-weight:900; color:var(--red); line-height:1; letter-spacing:-1px; }
 .hc-badge-lbl { display:block; font-size:.65rem; color:rgba(255,255,255,.4); font-weight:500; margin-top:.2rem; text-align:center; }
-.hc-body   { position:relative; height:295px; }
+.hc-body   { position:relative; height:340px; }
 .hc-legend {
   display:flex; gap:1.5rem; flex-wrap:wrap;
   margin-top:1rem; padding-top:.9rem;
