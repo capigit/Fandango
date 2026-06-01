@@ -6,6 +6,9 @@
   <meta name="description" content="Analyse du biais de notation Fandango — 505 films, 2014–2015">
   <title>Fandango — Analyse du Biais de Notation</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -137,8 +140,16 @@
 
   <!-- ── FOOTER ── -->
   <footer>
-    <p>Données : Walt Hickey / FiveThirtyEight · 505 films · 2014-2015
-       · <a href="https://github.com" target="_blank">Déployé sur GitHub Pages</a></p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo-dot" style="width:28px;height:28px;font-size:.9rem">⭐</div>
+        <span>FandangoAnalysis</span>
+      </div>
+      <p class="footer-copy">Données : Walt Hickey / FiveThirtyEight · 505 films · 2014–2015</p>
+      <a href="https://capigit.github.io/Fandango/" target="_blank" class="footer-link">
+        Voir le projet →
+      </a>
+    </div>
   </footer>
 
 </body>

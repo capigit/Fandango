@@ -104,9 +104,17 @@ function renderDemo(data) {
       </div>
     </div>`).join('');
 
-  document.getElementById('demo-box').innerHTML =
-    `<div class="demo-title">Exemples concrets</div>
-     <div class="demo-sub">Note réelle → Note affichée</div>${rows}`;
+  document.getElementById('demo-box').innerHTML = `
+    <div class="demo-winbar">
+      <span class="win-dot wr"></span>
+      <span class="win-dot wo"></span>
+      <span class="win-dot wg"></span>
+      <span class="demo-winlabel">fandango_ratings.csv</span>
+    </div>
+    <div class="demo-body">
+      <div class="demo-sub">Note réelle → Note affichée</div>
+      ${rows}
+    </div>`;
 }
 
 /* ── INSIGHT BANNER ── */
@@ -461,11 +469,44 @@ function renderHeroChart(data) {
   });
 }
 
+/* ── UI BEHAVIORS ── */
+function initUI() {
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Scroll-reveal
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  ['.stats-wrap', '.story-bg', '#charts', '.table-bg', 'footer'].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) { el.classList.add('reveal'); revealObs.observe(el); }
+  });
+
+  // Scrollspy nav
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const spyObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[id]').forEach(el => spyObs.observe(el));
+}
+
 /* ── INIT ── */
 (async () => {
   try {
     const data = await loadData();
     const s    = computeStats(data);
+    initUI();
     renderHeroChart(data);
     renderStats(s);
     renderDemo(data);
