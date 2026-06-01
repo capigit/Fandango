@@ -57,7 +57,8 @@ nav a.active::after { transform:scaleX(1); }
 }
 
 /* ── HERO GRID ── */
-.hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:5.5rem; align-items:center; }
+.hero .wrap  { max-width:1440px; }
+.hero-grid   { display:grid; grid-template-columns:1fr 1fr; gap:5.5rem; align-items:center; }
 
 /* ── HERO TEXT (gauche) ── */
 .hero-text { text-align:left; }
